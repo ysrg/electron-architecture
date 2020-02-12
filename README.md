@@ -13,8 +13,14 @@ The *renderer* processes (you can multiple of them in the screenshot) are respon
 
 Seeing multiple *renderer* is actually not a bad thing. Sharing resources between multiple *renderer* processes leads to more performance because we free CPU resources. The underlying Chromium architecture is doing this under the hood on lower (OS) level. When loading heavy modules or inter-process communications, we also can see a bump in system resources required, but that is temporarily, until the loading completes and we get resource freeing. Remember, that this is all for performance sake -- fast loading in memory-> subsequent fast memory freeing. The whole process is very technical and low level, we just need to know that the OS schedule processes and handles resources.
 
+![GitHub Logo](/resources/process-comms.png)
+
 GPU helpers that we can see in the Activity Monitor are also related to how Electron(Chromium) tries to improve performance. GPU acceleration opens an additional process for every window so the interactions within the app will be faster.
 
 ### Things that could be done to improve resource handling
 
-Although out app handles resources very good, going further we can try to improve some of the things we're implementing. Eg, *main* -> *renderer* process communications are resource expensive. We could avoid making unnecessary event callback calls in parts of the application that don't necessary need it at that moment. Also, we'd need to investigate further if there are some kind of memoization mechanisms on how to handle inter process communication.
+Going further we can try to improve some of the things we're implementing. Eg, *main* -> *renderer* process communications are resource expensive. We could avoid making unnecessary event callback calls in parts of the application that don't necessary need it at that moment. Also, we'd need to investigate further if there are some kind of memoization mechanisms on how to handle inter process communication.
+
+### Conclusion
+
+Our app handles resources very good, we can see bumps in RAM/CPU whenever we interact with *renderer* and it needs to send more events to the *main* process, but this is to be expected and is nothing out of the ordinary.
