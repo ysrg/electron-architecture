@@ -11,6 +11,8 @@ The *main* is responsible for creating browserWindow instances, handle all the e
 
 The *renderer* processes (you can multiple of them in the screenshot) are responsible for running the user-interface of the app. Each window within the app will be a separate *renderer* process and it can handle multiple *renderer* processes still if you'd use *iframes* or other type of embedded content ([More info here](https://www.electronjs.org/docs/api/webview-tag)). We can easily verify this by opening the `About` window and see in the Activity monitor a new *renderer* process.
 
+![GitHub Logo](/resources/am.png)
+
 Seeing multiple *renderer* is actually not a bad thing. Sharing resources between multiple *renderer* processes leads to more performance because we free CPU resources. The underlying Chromium architecture is doing this under the hood on lower (OS) level. When loading heavy modules or inter-process communications, we also can see a bump in system resources required, but that is temporarily, until the loading completes and we get resource freeing. Remember, that this is all for performance sake -- fast loading in memory-> subsequent fast memory freeing. The whole process is very technical and low level, we just need to know that the OS schedule processes and handles resources.
 
 ![GitHub Logo](/resources/process-comms.png)
