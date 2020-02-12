@@ -15,7 +15,9 @@ Seeing multiple *renderer* is actually not a bad thing. Sharing resources betwee
 
 ![GitHub Logo](/resources/process-comms.png)
 
-GPU helpers that we can see in the Activity Monitor are also related to how Electron(Chromium) tries to improve performance. GPU acceleration opens an additional process for every window so the interactions within the app will be faster.
+*GPU helpers* that we can see in the Activity Monitor are also related to how Electron(Chromium) tries to improve performance. GPU acceleration opens an additional process for every window so the interactions within the app will be faster.
+
+*Electron (app) helpers* are processes spawn internally by Chromium to interact with the operating system. Any time we read/write to the filesystem or otherwise interact with native capabilities -- we need this helper process to interact with native APIs.
 
 ### Things that could be done to improve resource handling
 
